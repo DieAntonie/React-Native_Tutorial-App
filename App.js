@@ -15,25 +15,13 @@ type Props = {};
 export default class App extends Component<Props> {
 
     state = {
-        placeName: "",
         places: [],
     };
 
-    placeNameChangedHandler = (text) => {
-        this.setState({
-            placeName: text
-        })
-    };
-
-    placeSubmitHandler = () => {
-        if (!this.state.placeName.trim()) {
-            alert("please enter place name.");
-            return;
-        }
-
+    placeAddedHandler = (placeName) => {
         this.setState((prevState) => {
             return {
-                places: prevState.places.concat(prevState.placeName),
+                places: prevState.places.concat(placeName),
             };
         })
     };
@@ -41,11 +29,8 @@ export default class App extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <PlaceInput
-                    onChangeText={this.placeNameChangedHandler}
-                    value={this.state.placeName}
-                    onPress={this.placeSubmitHandler} />
-                <PlaceList value={this.state.places} />
+                <PlaceInput onPlaceAdded={this.placeAddedHandler} />
+                <PlaceList places={this.state.places} />
             </View>
         );
     };

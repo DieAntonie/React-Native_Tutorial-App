@@ -8,7 +8,8 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
-import ListItem from './src/components/ListItem/ListItem';
+import PlaceList from './src/components/PlaceList/PlaceList';
+import PlaceInput from './src/components/PlaceInput/PlaceInput';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -38,25 +39,13 @@ export default class App extends Component<Props> {
     };
 
     render() {
-        const placeOutput = this.state.places.map((place, index) => (
-            <ListItem key={index} placeName={place} />
-        ))
         return (
             <View style={styles.container}>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={styles.placeInput}
-                        placeholder="An awesome place"
-                        onChangeText={this.placeNameChangedHandler}
-                        value={this.state.placeName} />
-                    <Button
-                        style={styles.placeButton}
-                        onPress={this.placeSubmitHandler}
-                        title="Add" />
-                </View>
-                <View style={styles.listContainer}>
-                    {placeOutput}
-                </View>
+                <PlaceInput
+                    onChangeText={this.placeNameChangedHandler}
+                    value={this.state.placeName}
+                    onPress={this.placeSubmitHandler} />
+                <PlaceList value={this.state.places} />
             </View>
         );
     };
@@ -70,19 +59,4 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
         justifyContent: 'flex-start',
     },
-    inputContainer: {
-        alignItems: 'center',
-        flexDirection: "row",
-        justifyContent: "space-between",
-    },
-    placeInput: {
-        width: "70%",
-    },
-    placeButton: {
-        width: "30%",
-    },
-    listContainer: {
-        width: "100%",
-        margin: 50,
-    }
 });

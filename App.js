@@ -23,33 +23,20 @@ export default class App extends Component<Props> {
   };
 
   placeNameChangedHandler = (text) => {
-    Alert.alert(
-      'Alert Title',
-      text,
-      [
-        { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel',
-        },
-        { text: 'OK', onPress: () => console.log('OK Pressed') },
-      ],
-      { cancelable: false },
-    );
+    this.setState({
+      placeName: text
+    })
   };
 
   render() {
     return (
       <View style={styles.container}>
         <TextInput
-          style={{borderColor: 'black', borderWidth: 3, flex: 1, justifyContent: "center", alignItems: "center" }}
+          style={{ width: 300, borderColor: "black", borderWidth: 1 }}
+          placeholder="An awesome place"
           onChangeText={this.placeNameChangedHandler}
           value={this.state.placeName}
         />
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
       </View>
     );
   }

@@ -7,17 +7,11 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, TextInput } from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import { Platform, StyleSheet, View, TextInput, Button } from 'react-native';
 
 type Props = {};
 export default class App extends Component<Props> {
+
   state = {
     placeName: "",
   };
@@ -32,11 +26,11 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <TextInput
-          style={{ width: 300, borderColor: "black", borderWidth: 1 }}
           placeholder="An awesome place"
           onChangeText={this.placeNameChangedHandler}
           value={this.state.placeName}
         />
+        <Button title="Add" />
       </View>
     );
   }

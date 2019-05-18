@@ -1,11 +1,22 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { Component }  from 'react';
+import { View, Text, TouchableHighlight, Button, StyleSheet } from 'react-native';
 
-const listItem = (props) => (
-    <View style={styles.listItem}>
-        <Text>{props.placeName}</Text>
-    </View>
-);
+export default class ListItem extends Component {
+
+    pressHandler = () => {
+        return;
+    }
+
+    render() {
+        return (
+            <TouchableHighlight onPress={this.pressHandler}>
+                <View style={styles.listItem}>
+                    <Text>{this.props.placeName}</Text>
+                </View>
+            </TouchableHighlight>
+        );
+    };
+}
 
 const styles = StyleSheet.create({
     listItem: {
@@ -15,4 +26,3 @@ const styles = StyleSheet.create({
     }
 })
 
-export default listItem;

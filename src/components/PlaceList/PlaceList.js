@@ -4,9 +4,16 @@ import ListItem from '../ListItem/ListItem';
 
 export default class PlaceList extends Component {
 
+    itemDeletedHandler = (index) => {
+        return this.props.onItemDeleted(index);
+    }
+
     render() {
         const placeOutput = this.props.places.map((place, index) => (
-            <ListItem key={index} placeName={place} />
+            <ListItem
+                key={index}
+                placeName={place}
+                onItemPressed={this.itemDeletedHandler} />
         ))
         return (
             <View style={styles.listContainer}>

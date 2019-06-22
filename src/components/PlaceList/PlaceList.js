@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import ListItem from '../ListItem/ListItem';
 
 export default class PlaceList extends Component {
@@ -9,17 +9,17 @@ export default class PlaceList extends Component {
     }
 
     render() {
-        const placeOutput = this.props.places.map((place, index) => (
-            <ListItem
-                key={index}
-                value={index}
-                placeName={place}
-                onItemPressed={this.itemDeletedHandler} />
-        ))
         return (
-            <ScrollView style={styles.listContainer}>
-                {placeOutput}
-            </ScrollView>
+            <FlatList
+                style={styles.listContainer}
+                data={this.props.places}
+                renderItem={info => 
+                    <ListItem
+                        value={info.item.key}
+                        placeName={info.item.value}
+                        onItemPressed={this.itemDeletedHandler} />
+                }
+            />
         );
     };
 }

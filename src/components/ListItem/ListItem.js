@@ -15,7 +15,7 @@ export default class ListItem extends Component {
                         resizeMode="cover"
                         source={this.props.placeImage}
                         style={styles.placeImage}/>
-                    <Text>{this.props.placeName}</Text>
+                    <Text>{this.props.value} - {this.props.placeName}</Text>
                 </View>
             </TouchableHighlight>
         );

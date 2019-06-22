@@ -4,8 +4,8 @@ import ListItem from '../ListItem/ListItem';
 
 export default class PlaceList extends Component {
 
-    itemDeletedHandler = (index) => {
-        return this.props.onItemDeleted(index);
+    itemSelectedHandler = (index) => {
+        return this.props.onItemSelected(index);
     }
 
     render() {
@@ -18,7 +18,7 @@ export default class PlaceList extends Component {
                         value={info.item.key}
                         placeName={info.item.value}
                         placeImage={info.item.image}
-                        onItemPressed={this.itemDeletedHandler} />
+                        onItemPressed={this.itemSelectedHandler} />
                 }
             />
         );

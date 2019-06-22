@@ -8,8 +8,9 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
-import PlaceList from './src/components/PlaceList/PlaceList';
 import PlaceInput from './src/components/PlaceInput/PlaceInput';
+import PlaceList from './src/components/PlaceList/PlaceList';
+import placeImage from './src/assets/holiday.jpg';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -21,7 +22,13 @@ export default class App extends Component<Props> {
     placeAddedHandler = (placeName) => {
         this.setState((prevState) => {
             return {
-                places: prevState.places.concat({key: prevState.places.length, value: placeName}),
+                places: prevState.places.concat({
+                    key: prevState.places.length,
+                    value: placeName,
+                    image: placeImage || {
+                        uri: "https://www.thelocal.fr//userdata/images/article/e7ed5c096c888a7290ac39275aa8998880137a8b43e58fa184f6296ffddc3b6b.jpg"
+                    }
+                }),
             };
         });
     };
@@ -31,7 +38,11 @@ export default class App extends Component<Props> {
             return {
                 places: prevState.places
                     .filter(place => place.key !== index)
-                    .map((place, i) => ({key: i, value: place.value}))
+                    .map((place, i) => ({
+                        key: i,
+                        value: place.value,
+                        image: place.image
+                    }))
             };
         });
     };

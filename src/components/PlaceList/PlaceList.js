@@ -17,6 +17,7 @@ export default class PlaceList extends Component {
                     <ListItem
                         value={info.item.key}
                         placeName={info.item.value}
+                        placeImage={info.item.image}
                         onItemPressed={this.itemDeletedHandler} />
                 }
             />

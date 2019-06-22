@@ -4,7 +4,7 @@ import { View, Text, TouchableHighlight, Button, StyleSheet } from 'react-native
 export default class ListItem extends Component {
 
     pressHandler = () => {
-        return this.props.onItemPressed(this.props.key);
+        return this.props.onItemPressed(this.props.value);
     }
 
     render() {

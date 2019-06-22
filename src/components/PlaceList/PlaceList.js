@@ -12,6 +12,7 @@ export default class PlaceList extends Component {
         const placeOutput = this.props.places.map((place, index) => (
             <ListItem
                 key={index}
+                value={index}
                 placeName={place}
                 onItemPressed={this.itemDeletedHandler} />
         ))

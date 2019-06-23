@@ -13,7 +13,6 @@ import { connect } from 'react-redux'
 import PlaceDetail from './src/components/PlaceDetail/PlaceDetail'
 import PlaceInput from './src/components/PlaceInput/PlaceInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
-import placeImage from './src/assets/holiday.jpg';
 import { addPlace, deletePlace, selectPlace, deselectPlace } from './src/store/actions/index'
 
 type Props = {};
